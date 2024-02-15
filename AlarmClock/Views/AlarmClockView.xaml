@@ -1,0 +1,195 @@
+﻿<Window
+    x:Class="AlarmClock.AlarmClockView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="clr-namespace:AlarmClock.ViewModel"
+    Title="AlarmClockView"
+    Width="600"
+    Height="400"
+    d:DataContext="{d:DesignInstance Type=viewmodels:AlarmClockViewModel}"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ResourceDictionary Source="/Styles/Style.xaml"/>
+    </Window.Resources>
+
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="40"
+            Margin="0,5"
+            HorizontalAlignment="Center"
+            FontSize="28"
+            Text="{Binding CurrentTime}" />
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Height="40"
+            Padding="5,0,0,5"
+            VerticalContentAlignment="Center"
+            FontSize="14"
+            Text="{Binding MusicLocationShow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <Button
+            Grid.Row="1"
+            Grid.Column="3"
+            Width="80"
+            Height="40"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            Command="{Binding SelectMediaFileCommand}"
+            Content="... 𝄞"
+            FontSize="20"/>
+        <Border
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    Grid.Column="0"
+                    Height="40"
+                    Margin="0,10,0,10"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Top"
+                    FontSize="28"
+                    Text="{Binding TimeWakeUp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox
+                    Grid.Column="1"
+                    Width="40"
+                    Height="40"
+                    Margin="10,0,0,0"
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Top"
+                    FontSize="28"
+                    Text="{Binding TimeToPostpone, Mode=TwoWay}" />
+            </Grid>
+        </Border>
+        <Button
+            Grid.Row="2"
+            Grid.Column="3"
+            Width="80"
+            Height="40"
+            Margin="10,0,0,0"
+            HorizontalAlignment="Left"
+            Command="{Binding CreateAlarmCommand}"
+            Content="Create"
+            IsEnabled="{Binding CreateButtonEnabled}" />
+
+        <Border
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            MinHeight="30"
+            MaxHeight="180"
+            Margin="20,5"
+            BorderBrush="LightGray"
+            BorderThickness="1"
+            CornerRadius="0">
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding ObservedAlarms}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border
+                                        Grid.Column="0"
+                                        Margin="0,1"
+                                        BorderBrush="Gray"
+                                        BorderThickness="1">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="30" />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition Width="30" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                Margin="5"
+                                                Text="{Binding TimeWakeUpModel}" />
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                Margin="5"
+                                                Text="{Binding CurrentTimeModel}" />
+                                            <TextBlock
+                                                Grid.Column="2"
+                                                Margin="5"
+                                                Text="{Binding TimeToPostponeModel}" />
+                                            <TextBlock
+                                                Grid.Column="3"
+                                                Margin="5"
+                                                Text="{Binding MusicLocationShowModel}" />
+                                            <ToggleButton
+                                                Grid.Column="4"
+                                                Command="{Binding StartAlarmClockCommand}"
+                                                IsChecked="{Binding IsToggleButtonCheckedModel}"
+                                                Style="{StaticResource ToggleButtonStyle}" />
+                                            <Button
+                                                Grid.Column="5"
+                                                Margin="5"
+                                                Command="{Binding SetOffTheAlarmModelCommand}"
+                                                Content="SetOff"
+                                                IsEnabled="{Binding SetOffButtonEnabledModel}" />
+                                            <Button
+                                                Grid.Column="6"
+                                                Margin="5"
+                                                Command="{Binding StopAlarmClockModelCommand}"
+                                                Content="Stop"
+                                                IsEnabled="{Binding StopButtonEnabledModel}" />
+                                            <CheckBox
+                                                Grid.Column="7"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                IsChecked="{Binding AlarmClockIsSelectedModel}" />
+                                        </Grid>
+                                    </Border>
+                                    <Border Grid.Column="1" Margin="5,2,1,2">
+                                        <Button
+                                            Padding="5"
+                                            Command="{Binding DataContext.DeleteAlarmCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
+                                            CommandParameter="{Binding}"
+                                            Content="Delete"
+                                            Visibility="{Binding DeleteButtonVisibilityModel}" />
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+
+</Window>
