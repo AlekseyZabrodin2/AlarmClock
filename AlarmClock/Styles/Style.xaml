@@ -1,16 +1,15 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Rectangle
-                    Margin="2"
-                    SnapsToDevicePixels="true"
-                    Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                    StrokeDashArray="1 2"
-                    StrokeThickness="1" />
+                        Margin="2"
+                        SnapsToDevicePixels="true"
+                        Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                        StrokeDashArray="1 2"
+                        StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -36,35 +35,35 @@
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
                     <StackPanel Orientation="Horizontal">
                         <ContentPresenter
-                        Margin="{TemplateBinding Padding}"
-                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                        RecognizesAccessKey="True"
-                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                         <Border
-                        x:Name="on"
-                        Width="25"
-                        Height="25"
-                        Margin="10,0,0,0"
-                        Background="LightGray"
-                        CornerRadius="2,0,0,4">
+                            x:Name="on"
+                            Width="25"
+                            Height="25"
+                            Margin="10,0,0,0"
+                            Background="LightGray"
+                            CornerRadius="2,0,0,4">
                             <TextBlock
-                            x:Name="onText"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Text="On" />
+                                x:Name="onText"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="On" />
                         </Border>
                         <Border
-                        x:Name="off"
-                        Width="25"
-                        Height="25"
-                        Background="LightGray"
-                        CornerRadius="0,2,4,0">
+                            x:Name="off"
+                            Width="25"
+                            Height="25"
+                            Background="LightGray"
+                            CornerRadius="0,2,4,0">
                             <TextBlock
-                            x:Name="offText"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Text="Off" />
+                                x:Name="offText"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="Off" />
                         </Border>
                     </StackPanel>
                     <ControlTemplate.Triggers>

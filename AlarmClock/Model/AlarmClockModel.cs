@@ -16,8 +16,7 @@ using System.Windows.Threading;
 namespace AlarmClock.Model
 {
     public partial class AlarmClockModel : ObservableObject
-    {
-        private bool _alarmClockIsSelectedModel;
+    {        
 
         [ObservableProperty]
         private string? _timeWakeUpModel;
@@ -50,6 +49,9 @@ namespace AlarmClock.Model
         private bool? _isToggleButtonCheckedModel;
 
         [ObservableProperty]
+        private bool _alarmClockIsSelectedModel;
+
+        [ObservableProperty]
         private int _timeToPostponeModel;
 
         [ObservableProperty]
@@ -60,26 +62,6 @@ namespace AlarmClock.Model
 
         [ObservableProperty]
         private MediaPlayer? _soundPlayerModel;
-
-        [ObservableProperty]
-        private Visibility _deleteButtonVisibilityModel = Visibility.Collapsed;        
-
-        public bool AlarmClockIsSelectedModel
-        {
-            get => _alarmClockIsSelectedModel;
-            set
-            {
-                if(SetProperty(ref _alarmClockIsSelectedModel, value))
-                {
-                    if (_alarmClockIsSelectedModel != true)
-                    {                        
-                        DeleteButtonVisibilityModel = Visibility.Collapsed;
-                        return;
-                    }
-                    DeleteButtonVisibilityModel = Visibility.Visible;
-                }
-            }
-        }
 
 
         [RelayCommand]
