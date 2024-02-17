@@ -110,7 +110,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="4"
             MinHeight="30"
-            MaxHeight="180"
+            MaxHeight="190"
             Margin="20,5"
             BorderBrush="LightGray"
             BorderThickness="1"
@@ -127,7 +127,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Border
                                         Grid.Column="0"
-                                        Margin="0,1"
+                                        Margin="1"
                                         BorderBrush="Gray"
                                         BorderThickness="1">
                                         <Grid>
@@ -182,7 +182,7 @@
                                                 IsChecked="{Binding AlarmClockIsSelectedModel}" />
                                         </Grid>
                                     </Border>
-                                    <Border Grid.Column="1" Margin="5,2,1,2">
+                                    <Border Grid.Column="1" Margin="0,1,1,1">
                                         <Button
                                             Padding="5"
                                             Command="{Binding DataContext.DeleteAlarmCommand, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"
